@@ -6,19 +6,37 @@
     <projectFile pubXmlPath="HydraATM/HydraATM/Properties/PublishProfiles/win-x86.pubxml">HydraATM/HydraATM/HydraATM.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7bafbb-afd6-4a15-ba6f-ba558be16fd5" name="Changes" comment="" />
+    <list default="true" id="9e7bafbb-afd6-4a15-ba6f-ba558be16fd5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HydraATM/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HydraATM/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HydraATM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HydraATM/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Qesiul"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Qesiul/HydraATM.git",
+    "accountId": "9db681b7-4df2-448c-91c7-63a588363c51"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2vPV37vvGH30LpW5IWDdGkQ2nZC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,6 +46,7 @@
   "keyToString": {
     "Publish to IIS.HydraATM: win-x64.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dev",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Luis/source/repos/HydraATM",
     "nodejs_package_manager_path": "npm",
@@ -57,6 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744046497066</updated>
       <workItem from="1744046498985" duration="227000" />
+      <workItem from="1744047006193" duration="31000" />
     </task>
     <servers />
   </component>

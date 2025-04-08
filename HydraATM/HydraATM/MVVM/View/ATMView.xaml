@@ -1,0 +1,124 @@
+<UserControl
+    x:Class="HydraATM.MVVM.View.ATMView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HydraATM.MVVM.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:HydraATM.MVVM.ViewModel"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d"
+    d:DesignWidth="800" d:DesignHeight="450">
+
+    <!-- 
+      Ustaw DataContext w XAML, żeby 
+      automatyczny binding działał 
+    -->
+    <UserControl.DataContext>
+        <viewModel:ATMViewModel />
+    </UserControl.DataContext>
+
+    <Grid Padding="20" Background="Transparent">
+
+        <!-- 
+          Stosujemy prosty StackPanel, 
+          żeby ustawić pola jedno pod drugim.
+        -->
+        <StackPanel Spacing="10" HorizontalAlignment="Center">
+
+            <!-- IMIĘ -->
+            <StackPanel>
+                <TextBlock 
+        Text="Name"
+        Margin="0,0,0,5"
+        FontSize="14"
+        Foreground="White" />
+
+                <TextBox
+        Width="300"
+        Style="{StaticResource RoundedTextBox}"
+        BeforeTextChanging="LettersOnlyTextBox"
+        Text="{Binding Name, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!-- NAZWISKO -->
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock 
+        Text="Surname"
+        Margin="0,0,0,5"
+        FontSize="14"
+        Foreground="White" />
+
+                <TextBox
+        Width="300"
+        Style="{StaticResource RoundedTextBox}"
+        BeforeTextChanging="LettersOnlyTextBox"
+        Text="{Binding Surname, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!-- NUMER KONTA -->
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock 
+        Text="Account Number"
+        Margin="0,0,0,5"
+        FontSize="14"
+        Foreground="White" />
+
+                <TextBox
+        Width="300"
+        Style="{StaticResource RoundedTextBox}"
+        BeforeTextChanging="NumbersOnlyTextBox"
+        Text="{Binding AccountNumber, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!-- KWOTA -->
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock 
+        Text="Amount"
+        Margin="0,0,0,5"
+        FontSize="14"
+        Foreground="White" />
+
+                <TextBox
+        Width="300"
+        Style="{StaticResource RoundedTextBox}"
+        BeforeTextChanging="NumbersOnlyTextBox"
+        Text="{Binding Amount, Mode=TwoWay}" />
+            </StackPanel>
+
+
+            <!-- PRZYCISKI -->
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <Button Content="Withdraw"
+                        Command="{Binding WithdrawCommand}"
+                        Width="120"
+                        Height="40"
+                        Style="{StaticResource ButtonTheme}"/>
+
+                <Button Content="Reset"
+                        Command="{Binding ResetCommand}"
+                        Width="120"
+                        Height="40"
+                        Style="{StaticResource ButtonTheme}"/>
+            </StackPanel>
+
+            <!-- STATUS (np. "Withdrawal successful") -->
+            <TextBlock
+                Text="{Binding StatusMessage}"
+                Foreground="LightGreen"
+                FontSize="16"
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"/>
+
+            <!-- DATA GRID DO HISTORII -->
+            <controls:DataGrid
+                ItemsSource="{Binding TransactionHistory}"
+                AutoGenerateColumns="True"
+                IsReadOnly="True"
+                Height="200"
+                Width="600"
+                Margin="0,10,0,0" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

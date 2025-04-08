@@ -7,9 +7,51 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="HydraATM">
+    Title="HydraATM"
+    >
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid Background="#6A0DAD" x:Name="RootGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="#1E1E1E" />
+        
+        <TextBlock Grid.Column="0" Grid.Row="0"
+                   Text="HydraATM"
+                   HorizontalAlignment="Center"
+                   Margin="0,30,0,30"
+                   FontSize="36"
+                   />
+
+        <Grid Grid.Column="0" VerticalAlignment="Stretch" Background="#1E1E1E">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0"
+                   Text="HydraATM"
+                   HorizontalAlignment="Center"
+                   Margin="0,30,0,0"
+                   FontSize="36"
+                   />
+
+            <RadioButton Grid.Row="1" Content="ATM" IsChecked="True" Command="{Binding ATMViewCommand}" Style="{StaticResource MenuButtonTheme}" />
+            <RadioButton Grid.Row="2" Content="Deposit" Command="{Binding DepositViewCommand}" Style="{StaticResource MenuButtonTheme}" />
+            <RadioButton Grid.Row="3" Content="Bitcoin ATM" Command="{Binding BTCViewCommand}" Style="{StaticResource MenuButtonTheme}" />
+        </Grid>
+
+        <ContentControl Grid.Column="1" Margin="20,0,20,0" Content = "{Binding CurrentViewModel}" ContentTemplateSelector="{StaticResource MainViewTemplateSelector}"/>
+
+
+
+
+
+
+
+    </Grid>
 </Window>

@@ -3,14 +3,45 @@
     x:Class="HydraATM.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:HydraATM">
+    xmlns:local="using:HydraATM"
+    xmlns:core="using:HydraATM.Core">
     <Application.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewModel="using:HydraATM.MVVM.ViewModel"
+    xmlns:view="using:HydraATM.MVVM.View">
+
+            <!-- Import stylów -->
             <ResourceDictionary.MergedDictionaries>
-                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <!-- Other merged dictionaries here -->
+                <ResourceDictionary Source="/Theme/MainWindowMenuButton.xaml"/>
+                <ResourceDictionary Source="/Theme/RoundedTextBox.xaml"/>
+                <ResourceDictionary Source="/Theme/ButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <!-- Other app resources here -->
+
+            <DataTemplate x:Key="ATMViewTemplate">
+                <view:ATMView />
+            </DataTemplate>
+
+
+            <DataTemplate x:Key="DepositViewTemplate">
+                <view:DepositView />
+            </DataTemplate>
+
+
+
+            <DataTemplate x:Key="BTCViewTemplate">
+                <view:BTCView />
+            </DataTemplate>
+
+            <core:ViewModelTemplateSelector x:Key="MainViewTemplateSelector"
+                                 ATMViewTemplate="{StaticResource ATMViewTemplate}"
+                                 DepositViewTemplate="{StaticResource DepositViewTemplate}"
+                                 BTCViewTemplate="{StaticResource BTCViewTemplate}" />
+
+
+
         </ResourceDictionary>
+
     </Application.Resources>
 </Application>
