@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="HydraATM.MVVM.View.DepositView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -7,10 +6,121 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:HydraATM.MVVM.ViewModel"
-    x:DataType="viewModel:DepositViewModel"
-    mc:Ignorable="d">
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d"
+    d:DesignWidth="800" d:DesignHeight="450">
 
-    <Grid>
+    <UserControl.DataContext>
+        <viewModel:DepositViewModel />
+    </UserControl.DataContext>
 
+    <Grid Padding="20" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Spacing="10" HorizontalAlignment="Center">
+
+            <StackPanel>
+                <TextBlock
+                    Text="Name"
+                    Margin="0,0,0,5"
+                    FontSize="14"
+                    Foreground="White" />
+
+                <TextBox
+                    HorizontalAlignment="Stretch"
+                    MaxWidth="300"
+                    Style="{StaticResource RoundedTextBox}"
+                    BeforeTextChanging="LettersOnlyTextBox"
+                    Text="{Binding Name, Mode=TwoWay}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock
+                    Text="Surname"
+                    Margin="0,0,0,5"
+                    FontSize="14"
+                    Foreground="White" />
+
+                <TextBox
+                    HorizontalAlignment="Stretch"
+                    MaxWidth="300"
+                    Style="{StaticResource RoundedTextBox}"
+                    BeforeTextChanging="LettersOnlyTextBox"
+                    Text="{Binding Surname, Mode=TwoWay}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock
+                    Text="Account Number"
+                    Margin="0,0,0,5"
+                    FontSize="14"
+                    Foreground="White" />
+
+                <TextBox
+                    HorizontalAlignment="Stretch"
+                    MaxWidth="300"
+                    Style="{StaticResource RoundedTextBox}"
+                    BeforeTextChanging="NumbersOnlyTextBox"
+                    Text="{Binding AccountNumber, Mode=TwoWay}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock
+                    Text="Amount"
+                    Margin="0,0,0,5"
+                    FontSize="14"
+                    Foreground="White" />
+
+                <TextBox
+                    HorizontalAlignment="Stretch"
+                    MaxWidth="300"
+                    Style="{StaticResource RoundedTextBox}"
+                    BeforeTextChanging="NumbersOnlyTextBox"
+                    Text="{Binding Amount, Mode=TwoWay}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="20" Margin="0,20,0,0">
+                <Button Content="Deposit"
+                        Command="{Binding WithdrawCommand}"
+                        Style="{StaticResource ButtonTheme}"
+                        Width="120" Height="40" />
+
+                <Button Content="Reset"
+                        Command="{Binding ResetCommand}"
+                        Style="{StaticResource ButtonTheme}"
+                        Width="120" Height="40" />
+
+                <Button Content="Update"
+                        Command="{Binding UpdateCommand}"
+                        Style="{StaticResource ButtonTheme}"
+                        Width="120" Height="40" />
+
+                <Button Content="Delete"
+                        Command="{Binding DeleteCommand}"
+                        Style="{StaticResource ButtonTheme}"
+                        Width="120" Height="40" />
+            </StackPanel>
+
+            <TextBlock
+                Text="{Binding StatusMessage}"
+                Foreground="LightGreen"
+                FontSize="16"
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <controls:DataGrid
+            Grid.Row="1"
+            ItemsSource="{Binding TransactionHistory}"
+            SelectedItem="{Binding SelectedTransaction, Mode=TwoWay}"
+            AutoGenerateColumns="True"
+            IsReadOnly="True"
+            HorizontalAlignment="Stretch"
+            Margin="0,10,0,0"
+            MinWidth="600"
+            Height="200" />
     </Grid>
 </UserControl>
