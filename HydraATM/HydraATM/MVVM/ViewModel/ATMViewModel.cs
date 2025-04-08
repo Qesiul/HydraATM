@@ -202,7 +202,6 @@ namespace HydraATM.MVVM.ViewModel
             UpdateCommand.RaiseCanExecuteChanged();
             DeleteCommand.RaiseCanExecuteChanged();
         }
--
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
