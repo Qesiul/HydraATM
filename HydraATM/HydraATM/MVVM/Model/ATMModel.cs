@@ -1,18 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HydraATM.MVVM.Model
 {
-    public class ATMModel
+    public class ATMModel : INotifyPropertyChanged
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string AccountNumber { get; set; }
-        public decimal Amount { get; set; }
+        private string _name;
+        public string Name
+        {
+            get => _name;
+            set { _name = value; OnPropertyChanged(); }
+        }
+
+        private string _surname;
+        public string Surname
+        {
+            get => _surname;
+            set { _surname = value; OnPropertyChanged(); }
+        }
+
+        private string _accountNumber;
+        public string AccountNumber
+        {
+            get => _accountNumber;
+            set { _accountNumber = value; OnPropertyChanged(); }
+        }
+
+        private decimal _amount;
+        public decimal Amount
+        {
+            get => _amount;
+            set { _amount = value; OnPropertyChanged(); }
+        }
 
         public bool ValidateTransaction()
         {
@@ -26,6 +51,12 @@ namespace HydraATM.MVVM.Model
                 return false;
 
             return true;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
@@ -43,15 +74,12 @@ namespace HydraATM.MVVM.Model
             return _transactionHistory;
         }
 
-        // Business logic for processing a withdrawal
         public bool ProcessWithdrawal(ATMModel transaction)
         {
-
             if (!transaction.ValidateTransaction())
                 return false;
 
             _transactionHistory.Add(transaction);
-
             return true;
         }
     }

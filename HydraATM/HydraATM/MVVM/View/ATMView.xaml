@@ -10,23 +10,15 @@
     mc:Ignorable="d"
     d:DesignWidth="800" d:DesignHeight="450">
 
-    <!-- 
-      Ustaw DataContext w XAML, żeby 
-      automatyczny binding działał 
-    -->
     <UserControl.DataContext>
         <viewModel:ATMViewModel />
     </UserControl.DataContext>
 
     <Grid Padding="20" Background="Transparent">
 
-        <!-- 
-          Stosujemy prosty StackPanel, 
-          żeby ustawić pola jedno pod drugim.
-        -->
+
         <StackPanel Spacing="10" HorizontalAlignment="Center">
 
-            <!-- IMIĘ -->
             <StackPanel>
                 <TextBlock 
         Text="Name"
@@ -41,7 +33,6 @@
         Text="{Binding Name, Mode=TwoWay}" />
             </StackPanel>
 
-            <!-- NAZWISKO -->
             <StackPanel Margin="0,10,0,0">
                 <TextBlock 
         Text="Surname"
@@ -56,7 +47,6 @@
         Text="{Binding Surname, Mode=TwoWay}" />
             </StackPanel>
 
-            <!-- NUMER KONTA -->
             <StackPanel Margin="0,10,0,0">
                 <TextBlock 
         Text="Account Number"
@@ -71,7 +61,6 @@
         Text="{Binding AccountNumber, Mode=TwoWay}" />
             </StackPanel>
 
-            <!-- KWOTA -->
             <StackPanel Margin="0,10,0,0">
                 <TextBlock 
         Text="Amount"
@@ -86,23 +75,28 @@
         Text="{Binding Amount, Mode=TwoWay}" />
             </StackPanel>
 
-
-            <!-- PRZYCISKI -->
-            <StackPanel Orientation="Horizontal" Spacing="20">
+            <StackPanel Orientation="Horizontal" Spacing="20" Margin="0,20,0,0">
                 <Button Content="Withdraw"
-                        Command="{Binding WithdrawCommand}"
-                        Width="120"
-                        Height="40"
-                        Style="{StaticResource ButtonTheme}"/>
+            Command="{Binding WithdrawCommand}"
+            Style="{StaticResource ButtonTheme}"
+            Width="120" Height="40" />
 
                 <Button Content="Reset"
-                        Command="{Binding ResetCommand}"
-                        Width="120"
-                        Height="40"
-                        Style="{StaticResource ButtonTheme}"/>
+            Command="{Binding ResetCommand}"
+            Style="{StaticResource ButtonTheme}"
+            Width="120" Height="40" />
+
+                <Button Content="Update"
+            Command="{Binding UpdateCommand}"
+            Style="{StaticResource ButtonTheme}"
+            Width="120" Height="40" />
+
+                <Button Content="Delete"
+            Command="{Binding DeleteCommand}"
+            Style="{StaticResource ButtonTheme}"
+            Width="120" Height="40" />
             </StackPanel>
 
-            <!-- STATUS (np. "Withdrawal successful") -->
             <TextBlock
                 Text="{Binding StatusMessage}"
                 Foreground="LightGreen"
@@ -110,14 +104,14 @@
                 HorizontalAlignment="Center"
                 Margin="0,10,0,0"/>
 
-            <!-- DATA GRID DO HISTORII -->
             <controls:DataGrid
-                ItemsSource="{Binding TransactionHistory}"
-                AutoGenerateColumns="True"
-                IsReadOnly="True"
-                Height="200"
-                Width="600"
-                Margin="0,10,0,0" />
+    ItemsSource="{Binding TransactionHistory}"
+    SelectedItem="{Binding SelectedTransaction, Mode=TwoWay}"
+    AutoGenerateColumns="True"
+    IsReadOnly="True"
+    Height="200"
+    Width="600"
+    Margin="0,10,0,0" />
 
         </StackPanel>
     </Grid>
